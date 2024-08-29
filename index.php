@@ -14,9 +14,8 @@
 <body class="hold-transition sidebar-mini">
 	<!-- Site wrapper -->
 	<div class="wrapper">
-
+		<?php include('./libraries/aula02.php') ?><!-- importei o codigo que muda o nome da navbar -->
 		<?php include('./includes/component/navbar.php') ?> <!-- fazemos para aparcer -->
-
 		<?php include('./includes/component/saidebar.php') ?> <!-- fazemos para aparcer -->
 
 		<!-- Content Wrapper. Contains page content -->

@@ -533,9 +533,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../examples/blank.html" class="nav-link active">
+                <a href="../../index.php" class="nav-link active"><!-- coloquei-->
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Blank Page</p>
+                  <p>pagina principal</p>
                 </a>
               </li>
               <li class="nav-item">
