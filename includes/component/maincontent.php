@@ -16,7 +16,7 @@
 						</div>
 					</div>
 					<div class="card-body">
-						Start creating your amazing application!
+						aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 					</div>
 					<!-- /.card-body -->
 					<div class="card-footer">
