@@ -13,7 +13,7 @@
           <img src="../../../aula_php/pictures/outras/perfil.webp" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Perfil</a>
+          <a href="../../../aula_php/pages/perfil.php" class="d-block">Perfil</a>
         </div>
       </div>
 
@@ -32,7 +32,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="adminlte/index.html" class="nav-link">
+                <a href="../../adminlte/index.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v1</p>
                 </a>
@@ -93,7 +93,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="../../../aula_php/pages/relatorio.php" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Relatorios de consultas

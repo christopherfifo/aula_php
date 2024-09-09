@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="adminlte/plugins/fontawesome-free/css/all.min.css">
 	<link rel="stylesheet" href="adminlte/dist/css/adminlte.min.css">
 
-	<link rel="stylesheet" href="./css/barraLateral.css"
+	<link rel="stylesheet" href="./css/barraLateral.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
