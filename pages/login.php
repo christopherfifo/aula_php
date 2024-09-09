@@ -16,7 +16,7 @@
   <body class="obj">
     <header class="topo">
       <button class="tema obj">
-        <a href="" class="home-link obj"
+        <a href="../index.php" class="home-link obj"
           ><span class="home-title"
             ><i class="fa-solid fa-house" id="home"></i>Home</span
           ></a
