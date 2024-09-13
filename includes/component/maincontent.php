@@ -1,5 +1,5 @@
 			<!-- Main content -->
-			<section class="content atalho">
+			<section class="content">
 
 				<!-- Default box -->
 				<div class="card">
