@@ -1,0 +1,306 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+}
+
+.sidebar_container {
+    width: 90px;
+    height: 100%;
+    display: flex;
+    position: relative;
+}
+
+.sidebar_nav {
+    width: 100%;
+    height: 100svh;
+    background: #162C5B;
+    color: #f5f5f5;
+    z-index: 5;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transition: .4s;
+    padding-bottom: 1.5rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border-right: 2px solid #0b8994;
+}
+
+/* Estilizando a barra de rolagem para ficar invisível */
+.sidebar_nav::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.sidebar_nav {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Estilo normal de hover */
+.sidebar_nav:hover {
+    width: 300px;
+}
+
+/* Desativa o hover quando .sidebar_container tem a classe 'active' */
+.sidebar_container.active .sidebar_nav:hover {
+    width: 100%; /* Ou qualquer valor que você queira para a largura padrão */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.cabeca {
+    width: 100%;
+    height: 60px;
+    background: #205597;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    overflow: hidden;
+}
+
+.principal {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: rgb(237, 238, 238);
+}
+
+.sidebar_contato {
+    display: none;
+}
+
+.sidebar_li:hover > .sidebar_contato,
+.sidebar_li:hover .sidebar_contato {
+    display: block;
+    transition: .3s;
+}
+
+.linha {
+    width: 100%;
+    height: 1.5px;
+    background: #f5f5f5;
+}
+
+.sidebar_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.perfil {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px;
+    width: 100%;
+    gap:1rem;
+}
+
+.sidebar_li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+}
+
+.sidebar_ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    margin-top: .75rem;
+}
+
+.sidebar_link {
+    width: 100%;
+}
+
+.sidebar_description {
+    width: 100%;
+    gap: 2rem;
+    display: flex;
+    color: #f5f5f5;
+    font-size: 1.2rem;
+    align-items: center;
+    margin-left: 1.25rem;
+}
+
+.sidebar_li-contato {
+    flex-direction: column;
+    align-items: flex-start; /* Alinha os itens à esquerda */
+}
+
+.sidebar_contato {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha os itens à esquerda */
+    width: 100%;
+    margin-top: 1rem;
+    margin-left: .5rem;
+    row-gap: .5rem;
+}
+
+.sidebar_description i {
+    font-size: 1.75rem;
+}
+
+.sidebar_title{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.btn_cabeca {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+.btn_menu{
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.btn_menu i{
+    pointer-events: none;
+}
+
+.header_nav {
+    display: flex;
+    align-items: center;
+}
+
+.header_links {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+.header_links li a {
+    color: #f5f5f5;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.header_search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header_search input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+}
+
+.header_search button {
+    background: none;
+    border: none;
+    color: #f5f5f5;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+@media (width <= 770px){
+    .mobile_invi{
+        display: none;
+    }
+    .cabeca{
+        padding-inline: 5px;
+        justify-content: space-around;
+    }
+    .btn_menu{
+        min-width: 40px;
+        min-height: 40px;
+        margin-inline: 5px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .sidebar_container {
+        width: 100vw; /* 100% da largura da viewport */
+        height: 100vh; /* 100% da altura da viewport */
+        display: flex;
+        position: fixed; /* Sidebar fixa na tela */
+        transform: translateX(-100%); /* Começa oculta à esquerda */
+        background: black;
+        transition: transform 0.4s ease; /* Transição suave ao aparecer */
+        z-index: 4;
+    }
+    
+    /* Quando ativa, a sidebar aparece */
+    .sidebar_container.active {
+        transform: translateX(0);
+    }
+
+    /* Estilização do menu interno da sidebar */
+    .sidebar_nav {
+        width: 75%; /* Largura inicial da sidebar */
+        max-width: 300px; /* Limite de largura */
+        height: 100%;
+        background: #162C5B;
+        color: #f5f5f5;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        transition: width 0.4s ease; /* Transição suave da largura */
+        padding-bottom: 1.5rem;
+        overflow-x: hidden;
+        overflow-y: scroll; /* Permite rolagem vertical se o conteúdo for grande */
+        border-right: 0; /* Estilo da borda direita */
+        pointer-events: none;
+    }
+
+    /* Expande a largura do menu ao passar o mouse */
+    .sidebar_container.active .sidebar_nav:hover {
+        width: 100%; /* Expande para 100% ao passar o mouse */
+    }
+    .sidebar_contato{
+        display: flex;
+    }
+}
+
+
+.content.atalho{
+    width: 80% !important;
+    align-self: center;
+    z-index: 0 !important;
+}

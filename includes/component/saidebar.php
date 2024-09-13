@@ -1,132 +1,92 @@
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="../../../aula_php/index.php" class="brand-link home">
-      <span class="brand-text font-weight-light">Home</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="../../../aula_php/pictures/outras/perfil.webp" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="../../../aula_php/pages/perfil.php" class="d-block">Perfil</a>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../../adminlte/index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="adminlte/index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="adminlte/index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li>
+<aside class="sidebar_container">
+        <nav class="sidebar_nav">
+            <div class="perfil">
+                <img src="./img/perfil.jpg" class="sidebar_img" id="sidebar_img" >
+                <h1 class="sidebar_title" id="sidebar_nome">perfil</h1>
+            </div>
+            <div class="linha"></div>
+            <ul class="sidebar_ul">
+                <li class="sidebar_li">
+                    <a href="#" class="sidebar_link">
+                        <p class="sidebar_description"><i class="fa-solid fa-calendar-days"></i>home</p>
+                    </a>
+                </li>
+            
+            
+                <li class="sidebar_li">
+                    <a href="#" class="sidebar_link">
+                        <p class="sidebar_description"><i class="fa-solid fa-circle-exclamation"></i>home</p>
+                    </a>
+                </li>
+            
+            
+                <li class="sidebar_li">
+                    <a href="#" class="sidebar_link">
+                        <p class="sidebar_description"><i class="fa-solid fa-right-to-bracket"></i>home</p>
+                    </a>
+                </li>
+            
+            
+                <li class="sidebar_li">
+                    <a href="#" class="sidebar_link">
+                        <p class="sidebar_description"><i class="fa-solid fa-chart-pie"></i>home</p>
+                    </a>
+                </li>
+            
+            
+                <li class="sidebar_li">
+                    <a href="#" class="sidebar_link">
+                        <p class="sidebar_description"><i class="fa-solid fa-calendar-plus"></i>home</p>
+                    </a>
+                </li>
+            
+            
+                <li class="sidebar_li">
+                    <a href="#" class="sidebar_link">
+                        <p class="sidebar_description"><i class="fa-solid fa-users-gear"></i>home</p>
+                    </a>
+                </li>
+            
+            
+                <li class="sidebar_li">
+                    <a href="#" class="sidebar_link">
+                        <p class="sidebar_description"><i class="fa-regular fa-calendar-check"></i>home</p>
+                    </a>
+                </li>
+            
+            
+                <li class="sidebar_li">
+                    <a href="#" class="sidebar_link">
+                        <p class="sidebar_description"><i class="fa-regular fa-pen-to-square"></i>home</p>
+                    </a>
+                </li>
+            
+            
+                <li class="sidebar_li">
+                    <a href="#" class="sidebar_link">
+                        <p class="sidebar_description"><i class="fa-solid fa-gear"></i>home</p>
+                    </a>
+                </li>
+                <li class="sidebar_li sidebar_li-contato">
+                        <p class="sidebar_description"><i class="fa-solid fa-address-card"></i>contato</p>
+                    <ul class="sidebar_contato">
+                        <li class="sidebar_li">
+                            <a href="#" class="sidebar_link">
+                                <p class="sidebar_description"><i class="fa-brands fa-instagram"></i>instagram</p>
+                            </a>
+                        </li>
+                        <li class="sidebar_li">
+                            <a href="#" class="sidebar_link">
+                                <p class="sidebar_description"><i class="fa-brands fa-whatsapp"></i>whatsapp</p>
+                            </a>
+                        </li>
+                        <li class="sidebar_li">
+                            <a href="#" class="sidebar_link">
+                                <p class="sidebar_description"><i class="fa-solid fa-envelope"></i>email</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <a href="admin/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Quadro de avisos
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="../../../aula_php/pages/agenda.php" class="nav-link">
-            <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Agenda
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Usuarios
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                Consultas
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                historico
-                
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="../../../aula_php/pages/relatorio.php" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Relatorios de consultas
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="../../../aula_php/pages/calendario.php" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Calendario
-              </p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a href="../../../aula_php/pages/login.php" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
-              <p>
-              Login/register
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-search"></i>
-              <p>
-                Configurações
-              </p>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+        </nav>
+    </aside>
