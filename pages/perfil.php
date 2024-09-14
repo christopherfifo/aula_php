@@ -12,7 +12,9 @@
 
 	<link rel="stylesheet" href="../css/barraLateral.css">
 	<link rel="stylesheet" href="../css/perfil.css">
+	<link rel="stylesheet" href="../css/nav.css">
   <script src="../libraries/javascript/perfil.js" defer></script>
+  <link rel="stylesheet" href="../css/geral.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -22,7 +24,7 @@
 		<?php include('../includes/component/saidebar.php') ?>
 		
 
-		<div class="content-wrapper">
+		<div class="content-wrapper color">
 			<?php include('../includes/component/wrapper.php') ?> 
 
         <div class="profile-container">

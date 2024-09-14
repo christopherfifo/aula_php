@@ -13,7 +13,10 @@
   <link rel="stylesheet" href="../adminlte/plugins/fullcalendar/main.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../adminlte/dist/css/adminlte.min.css">
-  <script src="../libraries/javascript/perfil.js" defer></script>
+  <link rel="stylesheet" href="../css/nav.css">
+	<script src="../libraries/javascript/perfil.js" defer></script>
+	<link rel="stylesheet" href="../css/barraLateral.css">
+	<link rel="stylesheet" href="../css/geral.css">
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -27,7 +30,7 @@
 <?php include('../includes/component/saidebar.php') ?>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper color">
     <!-- Content Header (Page header) -->
 
     <?php include('../includes/component/wrapper.php') ?>

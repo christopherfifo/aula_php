@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="adminlte/dist/css/adminlte.min.css">
 	<link rel="stylesheet" href="./css/barraLateral.css">
 	<link rel="stylesheet" href="./css/sidebar.css">
+	<link rel="stylesheet" href="./css/nav.css">
+	<link rel="stylesheet" href="./css/geral.css">
 	<script src="../libraries/javascript/perfil.js" defer></script>
 </head>
 
@@ -21,7 +23,7 @@
 		<?php include('./includes/component/saidebar.php') ?>
 		
 
-		<div class="content-wrapper">
+		<div class="content-wrapper color">
 			<?php include('./includes/component/wrapper.php') ?> 
 			<?php include('./includes/component/maincontent.php') ?> 
 		</div>

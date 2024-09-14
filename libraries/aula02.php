@@ -1,11 +1,11 @@
 <?php
 $itens_de_menu = [
-    'Dashboard' => 'index3.html',
-    'clientes' => 'clientes.html',
-    'vendas' => 'vendas.html',
-    'Contas' => 'contas.html',
-    'Configurações' => 'configuracoes.html',
-    'pessoas' => 'pessoas.html'
+    'Home' => 'index.php',
+    'Consultas' => 'pages/consultas.php',
+    'Agendar' => 'pages/agenda.php',
+    'Usuarios' => 'pages/contas.html',
+    'Relatorios' => 'pages/relatorio.php',
+    'Calendario' => 'pages/calendario.php'
 ];
 ?>
   

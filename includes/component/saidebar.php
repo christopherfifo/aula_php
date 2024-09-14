@@ -22,7 +22,7 @@
             <a href="#" class="nav-link">
             <i class="fa-solid fa-address-card nav-icon"></i>
               <p>
-                Dashboard
+                Contato
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

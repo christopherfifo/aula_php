@@ -13,12 +13,12 @@
   <link rel="stylesheet" href="../adminlte//plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../adminlte/dist/css/adminlte.min.css">
-
+  <link rel="stylesheet" href="../css/nav.css">
 	<link rel="stylesheet" href="../css/barraLateral.css">
 	<link rel="stylesheet" href="../css/relatorio.css">
   <script src="../libraries/javascript/perfil.js" defer></script>
   <script src="../libraries/javascript/relatorio.js" defer></script>
-
+	<link rel="stylesheet" href="../css/geral.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -28,7 +28,7 @@
 		<?php include('../includes/component/saidebar.php') ?>
 		
 
-		<div class="content-wrapper">
+		<div class="content-wrapper color">
 			<?php include('../includes/component/wrapper.php') ?> 
     
       <section class="content">
