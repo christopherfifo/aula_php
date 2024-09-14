@@ -27,8 +27,7 @@
 			<?php include('./includes/component/wrapper.php') ?> 
 			<?php include('./includes/component/maincontent.php') ?> 
 		</div>
-
-		<?php include('./includes/component/footer.php') ?> 
+ 
 		<aside class="control-sidebar control-sidebar-dark">
 		</aside>
 	</div>

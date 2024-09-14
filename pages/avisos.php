@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="../css/nav.css">
   <script src="../libraries/javascript/perfil.js" defer></script>
   <link rel="stylesheet" href="../css/geral.css">
+  <link rel="stylesheet" href="../css/avisos.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -26,56 +27,39 @@
 
 		<div class="content-wrapper color">
 			<?php include('../includes/component/wrapper.php') ?> 
+            <main>
+        <section class="notice-board">
+            <h1>Quadro de Avisos</h1>
 
-        <div class="profile-container">
-    <div class="profile-pic-container">
-      <label for="profile-pic-input" class="profile-pic-label">
-        <img id="profile-pic" src="default-profile.png" alt="Foto de Perfil" />
-      </label>
-      <input type="file" id="profile-pic-input" accept="image/*" onchange="loadProfilePic(event)" style="display: none;">
-    </div>
+            <div class="notice">
+                <h2>Aviso 1</h2>
+                <p>Descrição do aviso 1. Aqui você pode fornecer mais detalhes sobre o aviso para os usuários.</p>
 
-    <!-- Formulário de Edição -->
-    <div class="profile-info">
-      <label>Nome:
-        <input type="text" id="nome" placeholder="Digite seu nome" />
-      </label>
+                <form id="response-form-1" class="response-form">
+                    <label for="response-1">Sua Resposta:</label>
+                    <textarea id="response-1" name="response-1" rows="4" placeholder="Digite sua resposta aqui..."></textarea>
+                    <button type="submit">Enviar Resposta</button>
+                </form>
+            </div>
 
-      <label>Número de Celular:
-        <input type="tel" id="telefone" placeholder="Digite seu número de celular" />
-      </label>
+            <div class="notice">
+                <h2>Aviso 2</h2>
+                <p>Descrição do aviso 2. Aqui você pode fornecer mais detalhes sobre o aviso para os usuários.</p>
 
-      <label>Email:
-        <input type="email" id="email" placeholder="Digite seu email" />
-      </label>
+                <form id="response-form-2" class="response-form">
+                    <label for="response-2">Sua Resposta:</label>
+                    <textarea id="response-2" name="response-2" rows="4" placeholder="Digite sua resposta aqui..."></textarea>
+                    <button type="submit">Enviar Resposta</button>
+                </form>
+            </div>
 
-      <label>RG:
-        <input type="text" id="rg" placeholder="Digite seu RG" />
-      </label>
-
-      <label>CPF:
-        <input type="text" id="cpf" placeholder="Digite seu CPF" />
-      </label>
-
-      <button id="save">Salvar</button>
-    </div>
-
-    <!-- Exibição de Dados Salvos -->
-    <div class="saved-info hidden">
-      <p><strong>Nome:</strong> <span id="nome-display"></span></p>
-      <p><strong>Número de Celular:</strong> <span id="telefone-display"></span></p>
-      <p><strong>Email:</strong> <span id="email-display"></span></p>
-      <p><strong>RG:</strong> <span id="rg-display"></span></p>
-      <p><strong>CPF:</strong> <span id="cpf-display"></span></p>
-      
-      <button id="edit">Editar</button>
-    </div>
-  </div>
-
+            <!-- Adicione mais avisos conforme necessário -->
+        </section>
+    </main>
 		</div>
 
 
- 
+
 		<aside class="control-sidebar control-sidebar-dark">
 		</aside>
 	</div>

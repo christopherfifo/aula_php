@@ -28,25 +28,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../adminlte/index.html" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="fa-brands fa-instagram nav-icon"></i>
                   <p>Instagram</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="adminlte/index2.html" class="nav-link">
+                <a href="#" class="nav-link">
                 <i class="fa-brands fa-whatsapp nav-icon"></i>
                   <p>Whatsapp</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="adminlte/index3.html" class="nav-link">
+                <a href="#" class="nav-link">
                 <i class="fa-solid fa-envelope nav-icon"></i>
                   <p>Email</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="adminlte/index3.html" class="nav-link">
+                <a href="../../../aula_php/pages/maps.php" class="nav-link">
                 <i class="fa-solid fa-map-location-dot nav-icon"></i>
                   <p>Clinica</p>
                 </a>
@@ -54,7 +54,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="admin/widgets.html" class="nav-link">
+            <a href="../../../aula_php/pages/avisos.php" class="nav-link">
             <i class="fa-solid fa-circle-exclamation nav-icon"></i>
               <p>
                 Quadro de avisos
@@ -62,7 +62,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../../../aula_php/pages/agenda.php" class="nav-link">
+            <a href="../../../aula_php/pages/consultas.php" class="nav-link">
             <i class="nav-icon fa-solid fa-calendar-check"></i>
               <p>
                 Consultas
@@ -70,7 +70,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="../../../aula_php/pages/usuarios.php" class="nav-link">
               <i class="nav-icon fa-solid fa-users-gear"></i>
               <p>
                 Usuarios
@@ -78,7 +78,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="../../../aula_php/pages/agenda.php" class="nav-link">
               <i class="nav-icon fa-solid fa-calendar-plus"></i>
               <p>
                 Agendar consultas
@@ -86,7 +86,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="../../../aula_php/pages/historico.php" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Historico
@@ -119,7 +119,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="../../../aula_php/pages/configuracoes.php" class="nav-link">
             <i class="fa-solid fa-gear nav-icon"></i>
               <p>
                 Configurações

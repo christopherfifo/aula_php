@@ -89,7 +89,7 @@
 		</div>
 
 
-		<?php include('../includes/component/footer.php') ?> 
+
 		<aside class="control-sidebar control-sidebar-dark">
 		</aside>
 	</div>

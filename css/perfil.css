@@ -12,6 +12,7 @@
     max-width: 400px;
     text-align: center;
     margin-inline: auto;
+    margin-block: 20px;
   }
   
   .profile-pic-container {
