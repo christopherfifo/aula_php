@@ -27,7 +27,7 @@
               <label for="remember-me">lembre-me</label>
             </div>
             <div class="pass-link">
-              <a class="obj" href="#">Esqueceu a senha?</a>
+              <a class="obj" href="../../../../aula_php/pages/esqueci.php">Esqueceu a senha?</a>
             </div>
           </div>
           <button type="submit" class="rl-tema obj" id="vali_login">
