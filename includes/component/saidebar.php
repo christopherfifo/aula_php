@@ -1,30 +1,26 @@
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="../../../aula_php/index.php" class="brand-link home">
-      <span class="brand-text font-weight-light">Home</span>
-    </a>
+  <aside class="main-sidebar sidebar-dark-primary elevation-4 barra">
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar ">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../../../aula_php/pictures/outras/perfil.webp" class="img-circle elevation-2" alt="User Image">
+          <img id="perfil-img" src="../../../aula_php/pictures/outras/perfil.webp" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="../../../aula_php/pages/perfil.php" class="d-block">Perfil</a>
+          <a href="../../../aula_php/pages/perfil.php" class="d-block" id="perfil-name">Perfil</a>
         </div>
       </div>
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
+      <nav class="mt-2 ">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="fa-solid fa-address-card nav-icon"></i>
               <p>
                 Dashboard
                 <i class="right fas fa-angle-left"></i>
@@ -33,27 +29,33 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="../../adminlte/index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
+                  <i class="fa-brands fa-instagram nav-icon"></i>
+                  <p>Instagram</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="adminlte/index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
+                <i class="fa-brands fa-whatsapp nav-icon"></i>
+                  <p>Whatsapp</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="adminlte/index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
+                <i class="fa-solid fa-envelope nav-icon"></i>
+                  <p>Email</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="adminlte/index3.html" class="nav-link">
+                <i class="fa-solid fa-map-location-dot nav-icon"></i>
+                  <p>Clinica</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
             <a href="admin/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <i class="fa-solid fa-circle-exclamation nav-icon"></i>
               <p>
                 Quadro de avisos
               </p>
@@ -61,23 +63,7 @@
           </li>
           <li class="nav-item">
             <a href="../../../aula_php/pages/agenda.php" class="nav-link">
-            <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Agenda
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Usuarios
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+            <i class="nav-icon fa-solid fa-calendar-check"></i>
               <p>
                 Consultas
               </p>
@@ -85,16 +71,32 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
+              <i class="nav-icon fa-solid fa-users-gear"></i>
+              <p>
+                Usuarios
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa-solid fa-calendar-plus"></i>
+              <p>
+                Agendar consultas
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-                historico
+                Historico
                 
               </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="../../../aula_php/pages/relatorio.php" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+            <i class="fa-solid fa-chart-line nav-icon"></i>
               <p>
                 Relatorios de consultas
               </p>
@@ -118,7 +120,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-search"></i>
+            <i class="fa-solid fa-gear nav-icon"></i>
               <p>
                 Configurações
               </p>
