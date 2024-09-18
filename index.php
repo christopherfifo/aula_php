@@ -26,6 +26,8 @@
 		<div class="content-wrapper color">
 			<?php include('./includes/component/wrapper.php') ?> 
 			<?php include('./includes/component/maincontent.php') ?> 
+			<?php include('./includes/component/consultasProximas.php') ?> 
+			<?php include('./includes/component/novidades.php') ?> 
 		</div>
  
 		<aside class="control-sidebar control-sidebar-dark">

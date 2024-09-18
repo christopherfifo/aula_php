@@ -4,7 +4,7 @@
 				<!-- Default box -->
 				<div class="card">
 					<div class="card-header">
-						<h3 class="card-title">Avisos</h3>
+						<h3 class="card-title">Consultas proximas</h3>
 
 						<div class="card-tools">
 							<button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -16,7 +16,7 @@
 						</div>
 					</div>
 					<div class="card-body corpo-dados">
-						Consultas mudada
+						sua proxima consulta é dia
 					</div>
 					<!-- /.card-body -->
 					<div class="card-footer">
