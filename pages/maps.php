@@ -36,27 +36,46 @@
                 <p><strong>Telefone:</strong> (00) 1234-5678</p>
                 <p><strong>Técnicos:</strong> Dr. João Silva, Dra. Maria Oliveira</p>
             </div>
-            <div class="slider_container">
-                <div class="slider">
-                    <div class="slide">
-                        <img src="../pictures/outras/oft1.jpg" alt="Imagem 1">
+
+        <div class="col-md-6 carrosel clinic-info">
+            <div class="card borda-ca">
+              <!-- /.card-header -->
+              <div class="card-body espaco-ca">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                  </ol>
+                  <div class="carousel-inner borda-ca">
+                    <div class="carousel-item active">
+                      <img class="d-block w-100" src="../pictures/outras/oft1.jpg" alt="First slide">
                     </div>
-                    <div class="slide" >
-                        <img src="../pictures/outras/oft2.jpg" alt="Imagem 2">
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="../pictures/outras/oft2.jpg" alt="Second slide">
                     </div>
-                    <div class="slide" >
-                        <img src="../pictures/outras/oft3.jpg" alt="Imagem 3">
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="../pictures/outras/oft3.jpg" alt="Third slide">
                     </div>
-                    <div class="slide">
-                        <img src="../pictures/outras/oft4.jpg" alt="Imagem 4">
-                    </div>
-                    <div class="slide">
-                        <img src="../pictures/outras/oft5.jpg" alt="Imagem 5">
-                    </div>
-                    <button class="prev" id="prev" >&#10094;</button>
-                    <button class="next" id="next" >&#10095;</button>
+                  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-custom-icon" aria-hidden="true">
+                      <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-custom-icon" aria-hidden="true">
+                      <i class="fas fa-chevron-right"></i>
+                    </span>
+                    <span class="sr-only">Next</span>
+                  </a>
                 </div>
+              </div>
+              <!-- /.card-body -->
             </div>
+            <!-- /.card -->
+        </div>
+
 
             <div id="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.497436127872!2d-46.66311112564233!3d-23.550571561194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5831d0b80801%3A0xb3a53d45986e3611!2sAv.%20Ang%C3%A9lica%2C%202100%20-%20conj%2052%20-%20Consola%C3%A7%C3%A3o%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001228-200!5e0!3m2!1spt-BR!2sbr!4v1726365006527!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
         </section>
@@ -74,6 +93,17 @@
 	<script src="../adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="../adminlte/dist/js/adminlte.min.js"></script>
 	<script src="../adminlte/dist/js/demo.js"></script>
+    <script src="../adminlte/plugins/jquery/jquery.min.js"></script>
+
+
+>
+
+<script src="../adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
 </body>
 
 </html>
