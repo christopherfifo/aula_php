@@ -1,8 +1,9 @@
 <div class="form-container login-container">
         <form
-          action="./node.js/javascrpitNode.js"
+          action="../backend/loginApi.php"
           method="POST"
           class="form_login"
+          id="formLogin"
         >
           <h1>Login</h1>
           <input
@@ -18,6 +19,7 @@
               name="password"
               placeholder="Password"
               class="inputs_login"
+              id="senha_entrar"
             />
             <i class="fa-regular fa-eye olhos obj"></i>
           </div>

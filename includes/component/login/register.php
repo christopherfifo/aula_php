@@ -1,6 +1,6 @@
 <div class="form-container register-container">
         <form
-          action="./node.js/javascrpitNode.js"
+          action="../backend/loginRegister.php"
           method="POST"
           id="form"
           class="form_register"
