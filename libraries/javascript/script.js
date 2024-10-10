@@ -144,6 +144,20 @@ validarRegistro.addEventListener("click", validacaoFinal);
 // Adiciona o ouvinte de eventos para o botão de login
 validarLogin.addEventListener("click", validacaoLogin);
 
+//! trocar de tema
+
+const obj = document.querySelectorAll(".obj");
+const icon = document.getElementById("dark");
+
+icon.addEventListener("click", respostaTema);
+
+function respostaTema() {
+  obj.forEach((element) => {
+    element.classList.toggle("dark");
+  });
+  icon.classList.toggle("fa-sun");
+  icon.classList.toggle("fa-moon");
+}
 
 //! local storege
 
