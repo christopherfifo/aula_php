@@ -47,10 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hora_consulta = $_POST['hora_consulta'];
     $id_exame = $_POST['id_exame'];
     $valor_exame = $_POST['valor_exame'];
+    $nome_exame = $_POST['nome_exame'];
 
     if (!empty($id_profissional) && !empty($user_id) && !empty($especialidade_profissional) && !empty($data_consulta) && !empty($hora_consulta)) {
         try {
-            // Insere na tabela CONSULTAS
             $stmtConsulta = $pdo->prepare("INSERT INTO CONSULTAS (id_usuario, id_profissional, especialidade_profissional, data_consulta, hora_consulta) VALUES (:id_usuario, :id_profissional, :especialidade_profissional, :data_consulta, :hora_consulta)");
             $stmtConsulta->bindParam(':id_usuario', $user_id);
             $stmtConsulta->bindParam(':id_profissional', $id_profissional);
@@ -61,17 +61,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $id_consulta = $pdo->lastInsertId();
 
-            // Insere na tabela DETALHES_CONSULTAS
-            if ($id_consulta && !empty($id_exame) && !empty($valor_exame)) {
+            if ($id_consulta && !empty($id_exame) && !empty($valor_exame) && !empty($nome_exame)) {
                 $stmtDetalhes = $pdo->prepare("INSERT INTO DETALHES_CONSULTAS (id_consulta, id_exame, nome_exame, valor_exame) VALUES (:id_consulta, :id_exame, :nome_exame, :valor_exame)");
                 $stmtDetalhes->bindParam(':id_consulta', $id_consulta);
                 $stmtDetalhes->bindParam(':id_exame', $id_exame);
-                $stmtDetalhes->bindParam(':nome_exame', $_POST['nome_exame']);
+                $stmtDetalhes->bindParam(':nome_exame', $nome_exame);
                 $stmtDetalhes->bindParam(':valor_exame', $valor_exame);
                 $stmtDetalhes->execute();
             }
 
             echo json_encode(['status' => 'success', 'message' => 'Consulta marcada com sucesso!']);
+            header('Location: ../index.php');
+            exit;
         } catch (PDOException $e) {
             echo json_encode(['status' => 'error', 'message' => 'Erro no banco de dados: ' . $e->getMessage()]);
         }
@@ -81,8 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -131,16 +130,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                             <div class="form-group">
                                 <label for="id_exame">Exame</label>
-                                <select class="form-control" id="id_exame" name="id_exame">
+                                <select class="form-control" id="id_exame" name="id_exame" onchange="atualizarValorExame()">
                                     <?php foreach ($exames as $exame): ?>
-                                        <option value="<?= $exame['id'] ?>" data-valor="<?= $exame['valor'] ?>"><?= $exame['nome'] ?></option>
+                                        <option value="<?= $exame['id'] ?>" data-valor="<?= $exame['valor'] ?>" data-nome="<?= $exame['nome'] ?>">
+                                            <?= $exame['nome'] ?>
+                                        </option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
+
+                            <!-- Campo oculto para enviar o nome do exame -->
+                            <input type="hidden" id="nome_exame" name="nome_exame">
+
                             <div class="form-group">
                                 <label for="valor_exame">Valor do Exame</label>
                                 <input type="text" class="form-control" id="valor_exame" name="valor_exame" readonly>
                             </div>
+
                             <div class="form-group">
                                 <label for="hora_consulta">Horário</label>
                                 <select class="form-control" id="hora_consulta" name="hora_consulta">
@@ -159,24 +165,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </form>
                     </div>
                 </div>
-
-                <script>
-                    document.getElementById('id_exame').addEventListener('change', function() {
-                        var selectedOption = this.options[this.selectedIndex];
-                        var valor = selectedOption.getAttribute('data-valor');
-                        document.getElementById('valor_exame').value = valor;
-                    });
-                </script>
             </main>
- 
         </div>
 
         <aside class="control-sidebar control-sidebar-dark"></aside>
     </div>
 
+    <script>
+    function atualizarValorExame() {
+        var select = document.getElementById('id_exame');
+        var valorExame = select.options[select.selectedIndex].getAttribute('data-valor');
+        var nomeExame = select.options[select.selectedIndex].getAttribute('data-nome');
+        document.getElementById('valor_exame').value = valorExame;
+        document.getElementById('nome_exame').value = nomeExame;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        atualizarValorExame();
+    });
+    </script>
+
     <script src="../adminlte/plugins/jquery/jquery.min.js"></script>
     <script src="../adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../adminlte/dist/js/adminlte.min.js"></script>
-    <script src="../adminlte/dist/js/demo.js"></script>
 </body>
 </html>

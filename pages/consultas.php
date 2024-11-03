@@ -1,3 +1,29 @@
+<?php
+require "../backend/config.php";
+session_start();
+
+if (!isset($_SESSION['user_email'])) {
+    header('Location: login.php');
+    exit;
+}
+
+$user_email = $_SESSION['user_email'];
+
+
+try {
+    $stmtUsuario = $pdo->prepare("SELECT * FROM CONSULTAS");
+    $stmtUsuario->execute();
+
+
+} catch (PDOException $e) {
+    echo '<div class="alert alert-danger">Erro ao buscar usuário ' . $e->getMessage() . '</div>';
+    exit;
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -37,37 +63,6 @@
                 <p><strong>Data:</strong> 20/09/2024</p>
                 <p><strong>Hora:</strong> 14:00</p>
                 <button type="button">Reagendar</button>
-            </div>
-
-            <div class="appointment">
-                <h2>Dr. Ana Oliveira</h2>
-                <p><strong>Procedimento:</strong> Exame de Sangue</p>
-                <p><strong>Data:</strong> 22/09/2024</p>
-                <p><strong>Hora:</strong> 09:30</p>
-                <button type="button">Reagendar</button>
-            </div>
-
-            <div class="appointment">
-                <h2>Dr. Carlos Lima</h2>
-                <p><strong>Procedimento:</strong> Consulta Dermatológica</p>
-                <p><strong>Data:</strong> 25/09/2024</p>
-                <p><strong>Hora:</strong> 11:00</p>
-                <button type="button">Reagendar</button>
-            </div>
-
-            <div class="appointment">
-                <h2>Dr. Maria Santos</h2>
-                <p><strong>Procedimento:</strong> Avaliação Cardíaca</p>
-                <p><strong>Data:</strong> 28/09/2024</p>
-                <p><strong>Hora:</strong> 15:00</p>
-                <button type="button">Reagendar</button>
-            </div>
-
-            <div class="appointment">
-                <h2>Dr. Pedro Almeida</h2>
-                <p><strong>Procedimento:</strong> Consulta Oftalmológica</p>
-                <p><strong>Data:</strong> 30/09/2024</p>
-                <p><strong>Hora:</strong> 13:30</p>
                 <button type="button">Reagendar</button>
             </div>
         </section>
