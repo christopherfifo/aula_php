@@ -42,6 +42,7 @@ try {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_profissional = $_POST['id_profissional'];
+    $nome_profissional = $_POST['nome_profissional'];
     $especialidade_profissional = $_POST['especialidade_profissional'];
     $data_consulta = $_POST['data_consulta'];
     $hora_consulta = $_POST['hora_consulta'];
@@ -51,9 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!empty($id_profissional) && !empty($user_id) && !empty($especialidade_profissional) && !empty($data_consulta) && !empty($hora_consulta)) {
         try {
-            $stmtConsulta = $pdo->prepare("INSERT INTO CONSULTAS (id_usuario, id_profissional, especialidade_profissional, data_consulta, hora_consulta) VALUES (:id_usuario, :id_profissional, :especialidade_profissional, :data_consulta, :hora_consulta)");
+            $stmtConsulta = $pdo->prepare("INSERT INTO CONSULTAS (id_usuario, id_profissional, nome_profissional, especialidade_profissional, data_consulta, hora_consulta) VALUES (:id_usuario, :id_profissional, :nome_profissional, :especialidade_profissional, :data_consulta, :hora_consulta)");
             $stmtConsulta->bindParam(':id_usuario', $user_id);
             $stmtConsulta->bindParam(':id_profissional', $id_profissional);
+            $stmtConsulta->bindParam(':nome_profissional', $nome_profissional);
             $stmtConsulta->bindParam(':especialidade_profissional', $especialidade_profissional);
             $stmtConsulta->bindParam(':data_consulta', $data_consulta);
             $stmtConsulta->bindParam(':hora_consulta', $hora_consulta);
@@ -82,7 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -114,20 +115,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <form method="POST" action="">
                             <div class="form-group">
                                 <label for="id_profissional">Médico</label>
-                                <select class="form-control" id="id_profissional" name="id_profissional">
+                                <select class="form-control" id="id_profissional" name="id_profissional" onchange="atualizarProfissional()">
                                     <?php foreach ($profissionais as $profissional): ?>
-                                        <option value="<?= $profissional['id'] ?>"><?= $profissional['nome'] ?></option>
+                                        <option value="<?= $profissional['id'] ?>" data-nome="<?= $profissional['nome'] ?>" data-especialidade="<?= $profissional['especialidade'] ?>">
+                                            <?= $profissional['nome'] ?>
+                                        </option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="especialidade_profissional">Especialidade</label>
-                                <select class="form-control" id="especialidade_profissional" name="especialidade_profissional">
-                                    <?php foreach ($profissionais as $profissional): ?>
-                                        <option value="<?= $profissional['especialidade'] ?>"><?= $profissional['especialidade'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
+
+                            <!-- Campos ocultos para enviar o nome e especialidade do profissional -->
+                            <input type="hidden" id="nome_profissional" name="nome_profissional">
+                            <input type="hidden" id="especialidade_profissional" name="especialidade_profissional">
+
                             <div class="form-group">
                                 <label for="id_exame">Exame</label>
                                 <select class="form-control" id="id_exame" name="id_exame" onchange="atualizarValorExame()">
@@ -172,6 +172,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <script>
+    function atualizarProfissional() {
+        var select = document.getElementById('id_profissional');
+        var nomeProfissional = select.options[select.selectedIndex].getAttribute('data-nome');
+        var especialidadeProfissional = select.options[select.selectedIndex].getAttribute('data-especialidade');
+        document.getElementById('nome_profissional').value = nomeProfissional;
+        document.getElementById('especialidade_profissional').value = especialidadeProfissional;
+    }
+
     function atualizarValorExame() {
         var select = document.getElementById('id_exame');
         var valorExame = select.options[select.selectedIndex].getAttribute('data-valor');
@@ -181,6 +189,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+        atualizarProfissional();
         atualizarValorExame();
     });
     </script>

@@ -18,8 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user_email'] = $email;
         $token = bin2hex(random_bytes(16));
         echo json_encode(['success' => 'Login bem-sucedido!', 'token' => $token]);
-        header('Location: ../index.php');
-        exit;
+
     } else {
         echo json_encode(['error' => 'Credenciais inválidas']);
     }

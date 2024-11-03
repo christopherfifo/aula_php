@@ -133,7 +133,7 @@ async function validacaoLogin(event) {
           localStorage.setItem('authToken', data.token);
 
           // Redirecionar ou realizar outra ação após o login
-          // window.location.href = 'pagina_protegida.html';
+          // window.location.href = '../../index.php';
       } else {
           alert(data.error); // Mensagem de erro
       }

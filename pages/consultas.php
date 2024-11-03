@@ -9,76 +9,195 @@ if (!isset($_SESSION['user_email'])) {
 
 $user_email = $_SESSION['user_email'];
 
-
+// Buscar o id do usuário
+$user_id = null;
 try {
-    $stmtUsuario = $pdo->prepare("SELECT * FROM CONSULTAS");
+    $stmtUsuario = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email");
+    $stmtUsuario->bindParam(':email', $user_email);
     $stmtUsuario->execute();
+    $user = $stmtUsuario->fetch(PDO::FETCH_ASSOC);
 
-
+    if ($user) {
+        $user_id = $user['id'];
+    } else {
+        echo '<div class="alert alert-danger">Usuário não encontrado.</div>';
+        exit;
+    }
 } catch (PDOException $e) {
     echo '<div class="alert alert-danger">Erro ao buscar usuário ' . $e->getMessage() . '</div>';
     exit;
 }
 
-
+// Buscar consultas futuras
+$consultas = [];
+try {
+    $stmtConsultas = $pdo->prepare("
+        SELECT c.id AS consulta_id, c.nome_profissional, c.especialidade_profissional, c.data_consulta, c.hora_consulta, 
+               d.nome_exame, d.valor_exame, d.id AS detalhe_id
+        FROM CONSULTAS c
+        INNER JOIN DETALHES_CONSULTAS d ON c.id = d.id_consulta
+        WHERE c.id_usuario = :user_id AND c.data_consulta >= CURDATE()
+        ORDER BY c.data_consulta, c.hora_consulta
+    ");
+    $stmtConsultas->bindParam(':user_id', $user_id);
+    $stmtConsultas->execute();
+    $consultas = $stmtConsultas->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo '<div class="alert alert-danger">Erro ao buscar consultas ' . $e->getMessage() . '</div>';
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>clinica oftalmofologica</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-	<link rel="stylesheet" href="../adminlte/plugins/fontawesome-free/css/all.min.css">
-	<link rel="stylesheet" href="../adminlte/dist/css/adminlte.min.css">
-
-	<link rel="stylesheet" href="../css/barraLateral.css">
-	<link rel="stylesheet" href="../css/perfil.css">
-	<link rel="stylesheet" href="../css/nav.css">
-  <script src="../libraries/javascript/perfil.js" defer></script>
-  <link rel="stylesheet" href="../css/geral.css">
-  <link rel="stylesheet" href="../css/consultas.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clínica Oftalmológica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../adminlte/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../adminlte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/geral.css">
 </head>
-
 <body class="hold-transition sidebar-mini">
-	<div class="wrapper">
-		<?php include('../libraries/aula02.php') ?>
-		<?php include('../includes/component/navbar.php') ?>
-		<?php include('../includes/component/saidebar.php') ?>
-		
+    <div class="wrapper">
+        <?php include('../libraries/aula02.php') ?>
+        <?php include('../includes/component/navbar.php') ?>
+        <?php include('../includes/component/saidebar.php') ?>
 
-		<div class="content-wrapper color">
-			<?php include('../includes/component/wrapper.php') ?> 
-            <main>
-        <section class="appointments">
-            <h1>Consultas</h1>
+        <div class="content-wrapper color">
+            <main class="container my-5">
+                <h1>Consultas Futuras</h1>
 
-            <div class="appointment">
-                <h2>Dr. João Silva</h2>
-                <p><strong>Procedimento:</strong> Consulta Geral</p>
-                <p><strong>Data:</strong> 20/09/2024</p>
-                <p><strong>Hora:</strong> 14:00</p>
-                <button type="button">Reagendar</button>
-                <button type="button">Reagendar</button>
+                <?php if (count($consultas) > 0): ?>
+                    <?php foreach ($consultas as $consulta): ?>
+                        <div class="card mb-3" id="consulta_<?= $consulta['consulta_id'] ?>">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= htmlspecialchars($consulta['nome_profissional']) ?></h5>
+                                <p><strong>Especialidade:</strong> <?= htmlspecialchars($consulta['especialidade_profissional']) ?></p>
+                                <p><strong>Exame:</strong> <?= htmlspecialchars($consulta['nome_exame']) ?></p>
+                                <p><strong>Valor do Exame:</strong> R$ <?= number_format($consulta['valor_exame'], 2, ',', '.') ?></p>
+                                <p><strong>Data:</strong> <?= date('d/m/Y', strtotime($consulta['data_consulta'])) ?></p>
+                                <p><strong>Hora:</strong> <?= date('H:i', strtotime($consulta['hora_consulta'])) ?></p>
+                                <button type="button" class="btn btn-primary btn-sm" onclick="abrirModalReagendar(<?= $consulta['consulta_id'] ?>, '<?= $consulta['data_consulta'] ?>', '<?= $consulta['hora_consulta'] ?>')">Reagendar</button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="deletarConsulta(<?= $consulta['consulta_id'] ?>, <?= $consulta['detalhe_id'] ?>)">Cancelar</button>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Não há consultas futuras agendadas.</p>
+                <?php endif; ?>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal para Reagendar -->
+    <div class="modal fade" id="modalReagendar" tabindex="-1" role="dialog" aria-labelledby="modalReagendarLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalReagendarLabel">Reagendar Consulta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formReagendar">
+                        <input type="hidden" id="consulta_id" name="consulta_id">
+                        <div class="form-group">
+                            <label for="nova_data">Data:</label>
+                            <input type="date" class="form-control" id="nova_data" name="nova_data" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nova_hora">Hora:</label>
+                            <input type="time" class="form-control" id="nova_hora" name="nova_hora" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="salvarReagendamento()">Salvar</button>
+                </div>
             </div>
-        </section>
-    </main>
-		</div>
+        </div>
+    </div>
 
+    <script src="../adminlte/plugins/jquery/jquery.min.js"></script>
+    <script src="../adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../adminlte/dist/js/adminlte.min.js"></script>
 
+    <script>
+    function abrirModalReagendar(consultaId, dataAtual, horaAtual) {
+        $('#consulta_id').val(consultaId);
+        $('#nova_data').val(dataAtual);
+        $('#nova_hora').val(horaAtual);
+        $('#modalReagendar').modal('show');
+    }
 
-		<aside class="control-sidebar control-sidebar-dark">
-		</aside>
-	</div>
+    function salvarReagendamento() {
+        const novaData = $('#nova_data').val();
+        const novoHorario = $('#nova_hora').val();
+        const consultaId = $('#consulta_id').val();
 
-	<script src="../adminlte/plugins/jquery/jquery.min.js"></script>
-	<script src="../adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="../adminlte/dist/js/adminlte.min.js"></script>
-	<script src="../adminlte/dist/js/demo.js"></script>
+        $.ajax({
+            url: '../libraries/php/remarcarConsulta.php', // Caminho atualizado
+            type: 'POST',
+            data: {
+                consulta_id: consultaId,
+                data_consulta: novaData,
+                hora_consulta: novoHorario
+            },
+            success: function(response) {
+                // Tente converter a resposta em JSON
+                try {
+                    const data = JSON.parse(response);
+                    if (data.status === 'success') {
+                        alert("Consulta reagendada com sucesso!");
+                        $('#modalReagendar').modal('hide');
+                        location.reload(); // Atualiza a página após o sucesso
+                    } else {
+                        alert("Erro: " + data.message);
+                    }
+                } catch (e) {
+                    alert('Erro ao processar a resposta do servidor.');
+                }
+            },
+            error: function() {
+                alert('Erro ao reagendar consulta.');
+            }
+        });
+    }
+
+    function deletarConsulta(consultaId, detalheId) {
+        if (confirm("Tem certeza que deseja cancelar esta consulta?")) {
+            $.ajax({
+                url: '../libraries/php/deletarConsulta.php', // Caminho atualizado
+                type: 'POST',
+                data: {
+                    consulta_id: consultaId,
+                    detalhe_id: detalheId
+                },
+                success: function(response) {
+                    // Tente converter a resposta em JSON
+                    try {
+                        const data = JSON.parse(response);
+                        if (data.status === 'success') {
+                            alert("Consulta cancelada com sucesso!");
+                            $('#consulta_' + consultaId).remove(); // Remove a consulta da lista
+                        } else {
+                            alert("Erro: " + data.message);
+                        }
+                    } catch (e) {
+                        alert('Erro ao processar a resposta do servidor.');
+                    }
+                },
+                error: function() {
+                    alert('Erro ao cancelar consulta.');
+                }
+            });
+        }
+    }
+</script>
+
 </body>
-
 </html>
