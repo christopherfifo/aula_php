@@ -1,9 +1,9 @@
 <?php
 $itens_de_menu = [
-    'Home' => 'index.php',
+    'Home' => 'principal.php',
     'Consultas' => 'pages/consultas.php',
     'Agendar' => 'pages/agenda.php',
-    'Usuarios' => 'pages/contas.html',
+    'Usuarios' => 'pages/usuarios.php',
     'Relatorios' => 'pages/relatorio.php',
     'Calendario' => 'pages/calendario.php'
 ];

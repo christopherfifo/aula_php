@@ -4,6 +4,8 @@
 
 require 'config.php';
 
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['name'];
     $email = $_POST['email'];
@@ -28,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
         
         echo json_encode(['success' => 'Usuário registrado com sucesso!']);
+        $_SESSION['user_email'] = $email;
     } catch (PDOException $e) {
         echo json_encode(['error' => 'Erro ao registrar usuário: ' . $e->getMessage()]);
     }

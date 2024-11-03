@@ -29,13 +29,13 @@
     <div class="container obj" id="container">
       <?php include('../libraries/LibLogin/LibInfo.php') ?>
 
-      <?php include('../includes/component/login/register.php') ?>
+      <?php include('../includes/components/login/register.php') ?>
 
-      <?php include('../includes/component/login/Login2.php') ?>
+      <?php include('../includes/components/login/Login2.php') ?>
 
       <div class="overlay-container">
 
-        <?php include('../includes/component/login/infoLogin.php') ?>
+        <?php include('../includes/components/login/infoLogin.php') ?>
 
       </div>
     </div>

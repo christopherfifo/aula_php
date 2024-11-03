@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             echo json_encode(['status' => 'success', 'message' => 'Consulta marcada com sucesso!']);
-            header('Location: ../index.php');
+            header('Location: ../principal.php');
             exit;
         } catch (PDOException $e) {
             echo json_encode(['status' => 'error', 'message' => 'Erro no banco de dados: ' . $e->getMessage()]);
@@ -101,11 +101,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <?php include('../libraries/aula02.php') ?>
-        <?php include('../includes/component/navbar.php') ?>
-        <?php include('../includes/component/saidebar.php') ?>
+        <?php include('../includes/components/navbar.php') ?>
+        <?php include('../includes/components/saidebar.php') ?>
 
         <div class="content-wrapper color">
-            <?php include('../includes/component/wrapper.php') ?>
+            <?php include('../includes/components/wrapper.php') ?>
             <main class="container my-5">
                 <div class="card">
                     <div class="card-header">

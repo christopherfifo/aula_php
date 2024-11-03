@@ -95,6 +95,7 @@ async function validacaoFinal(event) {
             if (data.success) {
                 alert(data.success); // Mensagem de sucesso
                 formRegister.reset(); // Limpa o formulário
+                window.location.href = '/aula_php/principal.php';
             } else {
                 alert(data.error); // Mensagem de erro
             }
@@ -133,7 +134,7 @@ async function validacaoLogin(event) {
           localStorage.setItem('authToken', data.token);
 
           // Redirecionar ou realizar outra ação após o login
-          // window.location.href = '../../index.php';
+          window.location.href = '/aula_php/principal.php';
       } else {
           alert(data.error); // Mensagem de erro
       }

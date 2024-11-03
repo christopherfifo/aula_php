@@ -70,8 +70,8 @@ try {
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <?php include('../libraries/aula02.php') ?>
-        <?php include('../includes/component/navbar.php') ?>
-        <?php include('../includes/component/saidebar.php') ?>
+        <?php include('../includes/components/navbar.php') ?>
+        <?php include('../includes/components/saidebar.php') ?>
 
         <div class="content-wrapper color">
             <main class="container my-5">
