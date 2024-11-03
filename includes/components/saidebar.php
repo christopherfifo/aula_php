@@ -126,7 +126,15 @@
               </p>
             </a>
           </li>
-        </ul>
+          <li class="nav-item">
+            <a href="../../../aula_php/pages/saida.php" class="nav-link">
+            <i class="fa-solid fa-door-open nav-icon"></i>
+              <p>
+                Logout
+              </p>
+            </a>
+          </li>
+        </ul> 
       </nav>
       <!-- /.sidebar-menu -->
     </div>

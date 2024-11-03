@@ -6,48 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clínica Oftalmológica - Japa Olho Fechado</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .navbar {
-            background-color: #003366; /* Azul escuro */
-        }
-        .navbar-brand, .nav-link {
-            color: #ffffff !important; /* Texto branco */
-        }
-        .footer {
-            background-color: #003366; /* Azul escuro */
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            font-size: 30px;
-        }
-        .hero {
-            background: url('https://58b04f5940c1474e557e363a.redesign.static-01.com/l/images/procrastinaC3A7C3A3o-mC3A9dica-young-black-jack1.jpg') no-repeat center center;
-            background-size: cover;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+	<link rel="stylesheet" href="adminlte/plugins/fontawesome-free/css/all.min.css">
+	<link rel="stylesheet" href="adminlte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
@@ -105,7 +68,7 @@
     </footer>
 
     <a href="https://wa.me/400028922" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+    <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

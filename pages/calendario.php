@@ -1,50 +1,5 @@
 <?php
-require "../backend/config.php";
-session_start();
-
-if (!isset($_SESSION['user_email'])) {
-    header('Location: login.php');
-    exit;
-}
-
-$user_email = $_SESSION['user_email'];
-
-// Buscar o id do usuário
-$user_id = null;
-try {
-    $stmtUsuario = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email");
-    $stmtUsuario->bindParam(':email', $user_email);
-    $stmtUsuario->execute();
-    $user = $stmtUsuario->fetch(PDO::FETCH_ASSOC);
-
-    if ($user) {
-        $user_id = $user['id'];
-    } else {
-        echo '<div class="alert alert-danger">Usuário não encontrado.</div>';
-        exit;
-    }
-} catch (PDOException $e) {
-    echo '<div class="alert alert-danger">Erro ao buscar usuário ' . $e->getMessage() . '</div>';
-    exit;
-}
-
-// Buscar todas as consultas (futuras e passadas)
-$consultas = [];
-try {
-    $stmtConsultas = $pdo->prepare("
-        SELECT c.id AS consulta_id, c.nome_profissional, c.especialidade_profissional, c.data_consulta, c.hora_consulta, 
-               d.nome_exame, d.valor_exame, d.id AS detalhe_id
-        FROM CONSULTAS c
-        INNER JOIN DETALHES_CONSULTAS d ON c.id = d.id_consulta
-        WHERE c.id_usuario = :user_id
-        ORDER BY c.data_consulta, c.hora_consulta
-    ");
-    $stmtConsultas->bindParam(':user_id', $user_id);
-    $stmtConsultas->execute();
-    $consultas = $stmtConsultas->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo '<div class="alert alert-danger">Erro ao buscar consultas ' . $e->getMessage() . '</div>';
-}
+include('../libraries/php/calendariol.php');
 ?>
 
 <!DOCTYPE html>
@@ -58,6 +13,7 @@ try {
     <link rel="stylesheet" href="../adminlte/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/geral.css">
+    <script src="../libraries/javascript/calendariol.js" defer></script>
     <style>
         .futura {
             background-color: #d4edda; /* Verde claro */
@@ -139,76 +95,6 @@ try {
     <script src="../adminlte/plugins/jquery/jquery.min.js"></script>
     <script src="../adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../adminlte/dist/js/adminlte.min.js"></script>
-
-    <script>
-    function abrirModalReagendar(consultaId, dataAtual, horaAtual) {
-        $('#consulta_id').val(consultaId);
-        $('#nova_data').val(dataAtual);
-        $('#nova_hora').val(horaAtual);
-        $('#modalReagendar').modal('show');
-    }
-
-    function salvarReagendamento() {
-        const novaData = $('#nova_data').val();
-        const novoHorario = $('#nova_hora').val();
-        const consultaId = $('#consulta_id').val();
-
-        $.ajax({
-            url: '../libraries/php/remarcarConsulta.php',
-            type: 'POST',
-            data: {
-                consulta_id: consultaId,
-                data_consulta: novaData,
-                hora_consulta: novoHorario
-            },
-            success: function(response) {
-                try {
-                    const data = JSON.parse(response);
-                    if (data.status === 'success') {
-                        alert("Consulta reagendada com sucesso!");
-                        $('#modalReagendar').modal('hide');
-                        location.reload(); // Atualiza a página após o sucesso
-                    } else {
-                        alert("Erro: " + data.message);
-                    }
-                } catch (e) {
-                    alert('Erro ao processar a resposta do servidor.');
-                }
-            },
-            error: function() {
-                alert('Erro ao reagendar consulta.');
-            }
-        });
-    }
-    function deletarConsulta(consultaId, detalheId) {
-        if (confirm("Tem certeza que deseja cancelar esta consulta?")) {
-            $.ajax({
-                url: '../libraries/php/deletarConsulta.php',
-                type: 'POST',
-                data: {
-                    consulta_id: consultaId,
-                    detalhe_id: detalheId
-                },
-                success: function(response) {
-                    try {
-                        const data = JSON.parse(response);
-                        if (data.status === 'success') {
-                            alert("Consulta cancelada com sucesso!");
-                            $('#consulta_' + consultaId).remove(); // Remove a consulta da lista
-                        } else {
-                            alert("Erro: " + data.message);
-                        }
-                    } catch (e) {
-                        alert('Erro ao processar a resposta do servidor.');
-                    }
-                },
-                error: function() {
-                    alert('Erro ao cancelar consulta.');
-                }
-            });
-        }
-    }
-    </script>
 
 </body>
 </html>
