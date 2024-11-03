@@ -1,52 +1,5 @@
 <?php
-
-require '../backend/config.php';
-
-session_start();
-
-// Verificando se o usuário está logado
-if (!isset($_SESSION['user_email'])) {
-    echo "Você precisa estar logado.";
-    exit; 
-}
-
-$usuarios = [];
-
-try {
-
-    $query = $pdo->query("SELECT id, nome FROM usuarios");
-    
-
-    while ($usuario = $query->fetch(PDO::FETCH_ASSOC)) {
-        $usuarios[] = $usuario;
-    }
-} catch (PDOException $e) {
-    echo '<div class="alert alert-danger">Erro ao buscar usuários: ' . $e->getMessage() . '</div>';
-}
-
-// Verifica se foi feita uma requisição para deletar um usuário
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['id'];
-
-    if (!empty($id)) {
-        try {
-            $stmt = $pdo->prepare('DELETE FROM usuarios WHERE id = :id'); // Corrigido o nome da tabela
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-
-            if ($stmt->rowCount() > 0) {
-                echo json_encode(['status' => 'success', 'message' => 'Usuário deletado com sucesso']);
-            } else {
-                echo json_encode(['status' => 'error', 'message' => 'Usuário não encontrado ou já deletado']);
-            }
-        } catch (PDOException $e) {
-            echo json_encode(['status' => 'error', 'message' => 'Erro no banco de dados: ' . $e->getMessage()]);
-        }
-    } else {
-        echo json_encode(['status' => 'error', 'message' => 'ID de usuário inválido']);
-    }
-    exit; 
-}
+include('../libraries/php/usuariosl.php');
 ?>
 
 <!DOCTYPE html>
@@ -62,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="../css/geral.css">
     <link rel="stylesheet" href="../css/usuarios.css">
+    <script src="../libraries/javascript/usuariosl.js" defer></script>
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -98,28 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="../adminlte/dist/js/adminlte.min.js"></script>
     <script src="../adminlte/dist/js/demo.js"></script>
 
-    <script>
-        function deletarUsuario(userId) {
-            if (confirm('Tem certeza que deseja deletar este usuário?')) {
-                $.ajax({
-                    url: '', // A mesma página, já que estamos tratando a requisição no mesmo arquivo
-                    type: 'POST',
-                    data: { id: userId },
-                    success: function(response) {
-                        const result = JSON.parse(response);
-                        if (result.status === 'success') {
-                            $('#usuario-' + userId).remove(); // Remove o usuário da interface
-                            alert(result.message);
-                        } else {
-                            alert(result.message);
-                        }
-                    },
-                    error: function() {
-                        alert('Erro ao tentar deletar o usuário. Tente novamente mais tarde.');
-                    }
-                });
-            }
-        }
-    </script>
+ 
 </body>
 </html>

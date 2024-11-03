@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
             $stmt->execute();
 
             // Após a atualização, redireciona para a página de usuários
-            header('Location: ../index.php');
+            header('Location: ./usuarios.php');
             exit();
         } catch (PDOException $e) {
             echo '<div class="alert alert-danger">Erro ao atualizar usuário: ' . htmlspecialchars($e->getMessage()) . '</div>';
@@ -58,7 +58,7 @@ if (isset($_GET['id'])) {
 
 // Se não houver usuário a ser editado, redireciona para a página de usuários
 if (!$usuarioEdit) {
-    header('Location: ../index.php');
+    header('Location: ../principal.php');
     exit();
 }
 ?>

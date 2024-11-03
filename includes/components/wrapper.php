@@ -7,7 +7,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../../../aula_php/index.php">Home</a></li>
+              <li class="breadcrumb-item"><a href="../../../aula_php/principal.php">Home</a></li>
               <!-- <li class="breadcrumb-item active">Pagina</li> -->
             </ol>
           </div>
