@@ -1,6 +1,6 @@
 // Função para deletar um usuário
 function deleteUser(userId) {
-    var userElement = document.getElementById(userId);
+    let userElement = document.getElementById(userId);
     if (userElement) {
         userElement.remove();
     }
@@ -8,12 +8,12 @@ function deleteUser(userId) {
 
 // Função para abrir o modal de edição
 function openEdit(userId) {
-    var modal = document.getElementById("edit-modal");
-    var form = document.getElementById("edit-form");
+    let modal = document.getElementById("edit-modal");
+    let form = document.getElementById("edit-form");
     
     // Preencher o formulário com as informações atuais
-    var userName = document.querySelector(`#${userId} .user-details h2`).innerText;
-    var userPhoto = document.querySelector(`#${userId} .user-photo`).style.backgroundImage;
+    let userName = document.querySelector(`#${userId} .user-details h2`).innerText;
+    let userPhoto = document.querySelector(`#${userId} .user-photo`).style.backgroundImage;
     
     form.elements["edit-name"].value = userName;
     form.elements["edit-photo"].value = userPhoto.replace('url("', '').replace('")', '');
@@ -30,16 +30,16 @@ function openEdit(userId) {
 
 // Função para fechar o modal de edição
 function closeEdit() {
-    var modal = document.getElementById("edit-modal");
+    let modal = document.getElementById("edit-modal");
     modal.style.display = "none";
 }
 
 // Função para atualizar as informações do usuário
 function updateUser(userId) {
-    var userName = document.getElementById("edit-name").value;
-    var userPhoto = document.getElementById("edit-photo").value;
+    let userName = document.getElementById("edit-name").value;
+    let userPhoto = document.getElementById("edit-photo").value;
     
-    var userElement = document.getElementById(userId);
+    let userElement = document.getElementById(userId);
     if (userElement) {
         userElement.querySelector('.user-details h2').innerText = userName;
         userElement.querySelector('.user-photo').style.backgroundImage = userPhoto ? `url(${userPhoto})` : 'none';
@@ -48,7 +48,7 @@ function updateUser(userId) {
 
 // Fechar o modal quando o usuário clicar fora do modal
 window.onclick = function(event) {
-    var modal = document.getElementById("edit-modal");
+    let modal = document.getElementById("edit-modal");
     if (event.target === modal) {
         closeEdit();
     }
