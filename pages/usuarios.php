@@ -2,6 +2,13 @@
 
 require '../backend/config.php';
 
+session_start();
+
+// Verificando se o usuário está logado
+if (!isset($_SESSION['user_email'])) {
+    echo "Você precisa estar logado.";
+    exit; 
+}
 
 $usuarios = [];
 
