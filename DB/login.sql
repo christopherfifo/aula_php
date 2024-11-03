@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS CONSULTAS (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
     id_profissional INT NOT NULL,
+    nome_profissional varchar(255) not null,
     especialidade_profissional VARCHAR(255) NOT NULL,
     data_consulta DATE NOT NULL,
     hora_consulta TIME NOT NULL,
@@ -125,6 +126,4 @@ INSERT INTO EXAMES (nome, valor) VALUES
 ('Exame de Sangue', 120.75),
 ('Raios X', 90.00);
 
-
-select * from usuarios;
 
