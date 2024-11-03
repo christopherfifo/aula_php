@@ -1,6 +1,6 @@
 <?php
 
-include('../backend/config.php');
+require '../backend/config.php';
 
 
 $usuarios = [];

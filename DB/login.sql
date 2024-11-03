@@ -111,8 +111,20 @@ VALUES (
     'F'                                -- Sexo (M para masculino ou F para feminino)
 );
 
+INSERT INTO PROFISSIONAIS (nome, especialidade) VALUES 
+('Dr. João Silva', 'Oftalmologista'),
+('Dra. Maria Oliveira', 'Pediatra'),
+('Dr. Carlos Santos', 'Cardiologista'),
+('Dra. Ana Pereira', 'Dermatologista'),
+('Dr. Lucas Almeida', 'Neurologista');
 
-delete from usuarios where id = 2;
+INSERT INTO EXAMES (nome, valor) VALUES 
+('Exame de Vista', 150.00),
+('Ultrassonografia', 200.50),
+('Hemograma Completo', 80.00),
+('Exame de Sangue', 120.75),
+('Raios X', 90.00);
+
 
 select * from usuarios;
 

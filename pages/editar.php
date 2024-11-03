@@ -1,13 +1,13 @@
 <?php
-include('../backend/config.php');
-
+require '../backend/config.php';
+session_start();
 // Inicializa as variáveis para o usuário a ser editado
 $usuarioEdit = null;
 
 // Verifica se um ID de usuário foi enviado via POST para edição
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     $id = $_POST['id'];
-
+    $_SESSION['id'] = $id;
     // Verifica se todos os campos estão preenchidos
     $fields = ['email', 'nome', 'numero_celular', 'cpf', 'rg', 'data_nascimento', 'sexo'];
     foreach ($fields as $field) {
@@ -84,6 +84,7 @@ if (!$usuarioEdit) {
         <?php include('../includes/component/saidebar.php') ?>
 
         <div class="content-wrapper color">
+        <section class="appointments">
             <main class="container my-5">
                 <h2 class="text-center mb-4">Editar Usuário</h2>
 
@@ -126,8 +127,8 @@ if (!$usuarioEdit) {
                 <?php else: ?>
                     <div class="alert alert-warning">Nenhum usuário encontrado para editar.</div>
                 <?php endif; ?>
-
             </main>
+         </section>
         </div>
 
         <aside class="control-sidebar control-sidebar-dark"></aside>
