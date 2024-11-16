@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS usuarios (
     rg VARCHAR(20)  UNIQUE,
     data_nascimento DATE,
     sexo ENUM('M', 'F'),
-    imagem LONGBLOB, 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

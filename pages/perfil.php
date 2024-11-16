@@ -31,7 +31,7 @@ include('../libraries/php/perfill.php');
                 <div class="container mt-4">
                     <h2>Meu Perfil</h2>
                     <div class="profile-info">
-                        <form action="" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
+                        <form action="" method="POST" class="needs-validation" novalidate>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="nome">Nome:</label>
@@ -65,12 +65,7 @@ include('../libraries/php/perfill.php');
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="imagem">Imagem de Perfil:</label>
-                                <input type="file" class="form-control" enctype="multipart/form-data" id="imagem" name="imagem" accept="image/*" />
-                            </div>
-                            </div>
+
                             <button type="button" id="edit-btn" class="btn btn-primary" onclick="enableEditing()">Editar</button>
                             <button id="save-btn" type="submit" class="btn btn-success" style="display: none;">Salvar</button>
                         </form>
