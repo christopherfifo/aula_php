@@ -23,10 +23,10 @@
         <?php include('../includes/components/saidebar.php') ?>
 
         <div class="content-wrapper color">
-            <?php include('../includes/components/wrapper.php') ?>
-            <main class="container my-5">
+
+            <main class="container mx-auto efeitos" style="max-width: 90%;">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header text-center">
                         <h3>Marcar Consulta</h3>
                     </div>
                     <div class="card-body">
@@ -79,14 +79,12 @@
                                 <label for="data_consulta">Data</label>
                                 <input type="date" class="form-control" id="data_consulta" name="data_consulta">
                             </div>
-                            <button type="submit" class="btn btn-primary">Marcar Consulta</button>
+                            <button type="submit" class="btn btn-primary" style="background-color: #4bb6b7; margin-inline: auto;">Marcar Consulta</button>
                         </form>
                     </div>
                 </div>
             </main>
         </div>
-
-        <aside class="control-sidebar control-sidebar-dark"></aside>
     </div>
 
     <script src="../adminlte/plugins/jquery/jquery.min.js"></script>

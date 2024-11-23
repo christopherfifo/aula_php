@@ -13,6 +13,8 @@ include('../libraries/php/calendariol.php');
     <link rel="stylesheet" href="../adminlte/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/geral.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/barraLateral.css">
     <script src="../libraries/javascript/calendariol.js" defer></script>
     <style>
         .futura {
@@ -30,10 +32,11 @@ include('../libraries/php/calendariol.php');
         <?php include('../includes/components/saidebar.php') ?>
 
         <div class="content-wrapper color">
-            <main class="container my-5">
+            <main class="container">
                 <h1>Consultas</h1>
 
                 <?php if (count($consultas) > 0): ?>
+                    <div class="d-flex flex-wrap" style="gap: 1rem; width: 100%;  margin-inline: auto;">
                     <?php foreach ($consultas as $consulta): ?>
                         <?php 
                         // Verifica a data da consulta para definir a classe CSS
@@ -41,19 +44,22 @@ include('../libraries/php/calendariol.php');
                         $dataAtual = strtotime(date('Y-m-d'));
                         $classe = ($dataConsulta >= $dataAtual) ? 'futura' : 'passada';
                         ?>
-                        <div class="card mb-3 <?= $classe ?>" id="consulta_<?= $consulta['consulta_id'] ?>">
-                            <div class="card-body">
+                        <div class="card mb-3 flex-fill <?= $classe ?>" style="min-width: 200px; max-width: 350px; margin-bottom: 20px; flex:1;" id="consulta_<?= $consulta['consulta_id'] ?>">
+                            <div class="card-body d-flex flex-column">
                                 <h5 class="card-title"><?= htmlspecialchars($consulta['nome_profissional']) ?></h5>
-                                <p><strong>Especialidade:</strong> <?= htmlspecialchars($consulta['especialidade_profissional']) ?></p>
+                                <p class="d-block"><strong>Especialidade:</strong> <?= htmlspecialchars($consulta['especialidade_profissional']) ?></p>
                                 <p><strong>Exame:</strong> <?= htmlspecialchars($consulta['nome_exame']) ?></p>
                                 <p><strong>Valor do Exame:</strong> R$ <?= number_format($consulta['valor_exame'], 2, ',', '.') ?></p>
                                 <p><strong>Data:</strong> <?= date('d/m/Y', strtotime($consulta['data_consulta'])) ?></p>
                                 <p><strong>Hora:</strong> <?= date('H:i', strtotime($consulta['hora_consulta'])) ?></p>
-                                <button type="button" class="btn btn-primary btn-sm" onclick="abrirModalReagendar(<?= $consulta['consulta_id'] ?>, '<?= $consulta['data_consulta'] ?>', '<?= $consulta['hora_consulta'] ?>')">Reagendar</button>
-                                <button type="button" class="btn btn-danger btn-sm" onclick="deletarConsulta(<?= $consulta['consulta_id'] ?>, <?= $consulta['detalhe_id'] ?>)">Cancelar</button>
+                                <div class="justify-content-center" style="display:flex; align-items:center; gap:1.5rem;">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="abrirModalReagendar(<?= $consulta['consulta_id'] ?>, '<?= $consulta['data_consulta'] ?>', '<?= $consulta['hora_consulta'] ?>')">Reagendar</button>
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="deletarConsulta(<?= $consulta['consulta_id'] ?>, <?= $consulta['detalhe_id'] ?>)">Cancelar</button>
+                                </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
+                    </div>
                 <?php else: ?>
                     <p>Não há consultas agendadas.</p>
                 <?php endif; ?>

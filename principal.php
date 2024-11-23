@@ -48,7 +48,6 @@ if (!isset($_SESSION['user_email'])) {
 	<script src="adminlte/plugins/jquery/jquery.min.js"></script>
 	<script src="adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="adminlte/dist/js/adminlte.min.js"></script>
-	<script src="adminlte/dist/js/demo.js"></script>
 </body>
 
 </html>

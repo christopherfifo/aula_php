@@ -28,8 +28,7 @@
 		<?php include('../includes/components/saidebar.php') ?>
 		
 
-		<div class="content-wrapper color">
-			<?php include('../includes/components/wrapper.php') ?> 
+		<div class="content-wrapper color"> 
     
       <section class="content">
       <div class="container-fluid">
@@ -87,17 +86,12 @@
     </section>
 
 		</div>
-
-
-
-		<aside class="control-sidebar control-sidebar-dark">
 		</aside>
 	</div>
 
 	<script src="../adminlte/plugins/jquery/jquery.min.js"></script>
 	<script src="../adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="../adminlte/dist/js/adminlte.min.js"></script>
-	<script src="../adminlte/dist/js/demo.js"></script>
   <script src="../adminlte/plugins/chart.js/Chart.min.js"></script>
 
 
