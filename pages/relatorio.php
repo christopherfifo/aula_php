@@ -1,3 +1,7 @@
+<?php
+include('../libraries/php/relatoriol.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 

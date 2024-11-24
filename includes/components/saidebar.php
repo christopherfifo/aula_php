@@ -1,17 +1,22 @@
-  <!-- Main Sidebar Container -->
+<!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4 barra">
 
     <!-- Sidebar -->
     <div class="sidebar ">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img id="perfil-img" src="../../../aula_php/pictures/outras/perfil.webp" class="img-circle elevation-2" alt="User Image">
+            <div class="image">
+                <?php if (defined('CONTEXT') && CONTEXT === 'main'): ?>
+                    <img src="<?php echo (empty($_SESSION['user_foto'])) ? './pictures/outras/perfil.webp' : './db/photos/' . $_SESSION['user_foto']; ?>" class="img-circle elevation-2" alt="User Image" style="width: 50px; height: 50px; object-fit: cover;" />
+                <?php else: ?>
+                    <img src="<?php echo (empty($_SESSION['user_foto'])) ? '../pictures/outras/perfil.webp' : '../db/photos/' . $_SESSION['user_foto']; ?>" class="img-circle elevation-2" alt="User Image" style="width: 50px; height: 50px; object-fit: cover;" />
+                <?php endif; ?>
+            </div>
+            <div class="info">
+                <a href="./pages/perfil.php" class="d-block" id="perfil-name"><?php echo (empty($_SESSION['user_nome'])) ? 'Perfil' : htmlspecialchars($_SESSION['user_nome']); ?></a>
+            </div>
         </div>
-        <div class="info">
-          <a href="../../../aula_php/pages/perfil.php" class="d-block" id="perfil-name">Perfil</a>
-        </div>
-      </div>
+        
 
       <!-- Sidebar Menu -->
       <nav class="mt-2 ">

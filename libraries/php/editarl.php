@@ -1,4 +1,5 @@
 <?php
+define('CONTEXT', 'other');
 require '../backend/config.php';
 session_start();
 // Inicializa as variáveis para o usuário a ser editado

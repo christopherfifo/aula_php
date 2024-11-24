@@ -1,10 +1,11 @@
 <?php
-
+define('CONTEXT', 'main');
 require "./backend/config.php";
 session_start();
 
 if (!isset($_SESSION['user_email'])) {
     echo json_encode(['status' => 'error', 'message' => 'Usuário não autenticado']);
+	header('Location: pages/login.php');
     exit;
 }
 ?>

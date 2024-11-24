@@ -1,3 +1,6 @@
+<?php
+include('../libraries/php/avisosl.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 

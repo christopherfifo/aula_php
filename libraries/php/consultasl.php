@@ -1,4 +1,6 @@
 <?php
+define('CONTEXT', 'other');
+
 require "../backend/config.php";
 session_start();
 

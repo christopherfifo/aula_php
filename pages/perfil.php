@@ -32,8 +32,9 @@ include('../libraries/php/perfill.php');
         <div class="profile-info text-center">
             <!-- Imagem Redonda -->
             <div class="mb-4">
-                <img src="../pictures/outras/perfil.webp" alt="Foto de Perfil" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;" />
+                <img src="<?php echo ($usuario['nome_foto'] == NULL) ? '../pictures/outras/perfil.webp' : '../db/photos/' . $usuario['nome_foto']; ?>" alt="Foto de Perfil" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;" />
             </div>
+
             <form action="" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
                 <!-- Campo Nome -->
                 <div class="form-group">
@@ -69,8 +70,9 @@ include('../libraries/php/perfill.php');
                 <div class="form-group">
                     <label for="sexo">Sexo:</label>
                     <select id="sexo" name="sexo" class="form-control" required disabled>
-                        <option value="m" <?php echo ($sexo_usuario == 'm') ? 'selected' : ''; ?>>Masculino</option>
-                        <option value="f" <?php echo ($sexo_usuario == 'f') ? 'selected' : ''; ?>>Feminino</option>
+                        <option value="m" <?php echo ($sexo_usuario == 'M') ? 'selected' : ''; ?>>Masculino</option>
+                        <option value="f" <?php echo ($sexo_usuario == 'F') ? 'selected' : ''; ?>>Feminino</option>
+                        <option value="n" <?php echo ($sexo_usuario == 'N') ? 'selected' : ''; ?>></option>
                     </select>
                 </div>
 
@@ -82,9 +84,9 @@ include('../libraries/php/perfill.php');
 
                 <!-- Botões -->
                 <div class="text-center">
-                    <button type="button" id="edit-btn" class="btn btn-primary" onclick="enableEditing()">Editar</button>
-                    <button id="save-btn" type="submit" class="btn btn-success" style="display: none;">Salvar</button>
-                </div>
+    <button type="button" id="edit-btn" class="btn btn-primary" onclick="enableEditing()">Editar</button>
+    <button id="save-btn" type="submit" class="btn btn-success" style="display: none;">Salvar</button>
+</div>
             </form>
         </div>
     </div>
