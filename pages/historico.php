@@ -28,23 +28,26 @@ include('../libraries/php/historicol.php');
         <?php include('../includes/components/saidebar.php') ?>
 
         <div class="content-wrapper color">
-            <?php include('../includes/components/wrapper.php') ?>
             <main>
                 <section class="history">
                     <h1>Histórico de Consultas</h1>
                     <p class="info-text">As seguintes consultas foram realizadas anteriormente:</p>
 
                     <?php if (count($consultas_passadas) > 0): ?>
+                        <div class="d-flex flex-wrap" style="gap: 1rem; width: 100%;  margin-inline: auto;">
                         <?php foreach ($consultas_passadas as $consulta): ?>
-                            <div class="appointment past-appointment">
-                                <h2><?= htmlspecialchars($consulta['nome_profissional']) ?></h2>
-                                <p><strong>Especialidade:</strong> <?= htmlspecialchars($consulta['especialidade_profissional']) ?></p>
+                            <div class="card mb-3 flex-fill" style="min-width: 200px; max-width: 350px; margin-bottom: 20px; flex:1;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><?= htmlspecialchars($consulta['nome_profissional']) ?></h5>
+                                <p class="d-block"><strong>Especialidade:</strong> <?= htmlspecialchars($consulta['especialidade_profissional']) ?></p>
                                 <p><strong>Exame:</strong> <?= htmlspecialchars($consulta['nome_exame']) ?></p>
                                 <p><strong>Valor do Exame:</strong> R$ <?= number_format($consulta['valor_exame'], 2, ',', '.') ?></p>
                                 <p><strong>Data:</strong> <?= date('d/m/Y', strtotime($consulta['data_consulta'])) ?></p>
                                 <p><strong>Hora:</strong> <?= date('H:i', strtotime($consulta['hora_consulta'])) ?></p>
                             </div>
+                        </div>
                         <?php endforeach; ?>
+                    </div>
                     <?php else: ?>
                         <p>Você ainda não realizou consultas.</p>
                     <?php endif; ?>
@@ -59,7 +62,6 @@ include('../libraries/php/historicol.php');
     <script src="../adminlte/plugins/jquery/jquery.min.js"></script>
     <script src="../adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../adminlte/dist/js/adminlte.min.js"></script>
-    <script src="../adminlte/dist/js/demo.js"></script>
 </body>
 
 </html>

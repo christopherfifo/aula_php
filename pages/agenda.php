@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../css/barraLateral.css">
     <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="../css/geral.css">
-    <link rel="stylesheet" href="../css/usuarios.css">
+    <link rel="stylesheet" href="../css/agenda.css">
     <script src="../libraries/javascript/agendal.js" defer></script>
 </head>
 <body class="hold-transition sidebar-mini">

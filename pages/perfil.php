@@ -26,59 +26,75 @@ include('../libraries/php/perfill.php');
         <?php include('../includes/components/saidebar.php') ?>
 
         <div class="content-wrapper color">
-            <?php include('../includes/components/wrapper.php') ?>
-            <section class="appointments">
-                <div class="container mt-4">
-                    <h2>Meu Perfil</h2>
-                    <div class="profile-info">
-                        <form action="" method="POST" class="needs-validation" novalidate>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="nome">Nome:</label>
-                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" value="<?php echo htmlspecialchars($usuario['nome']); ?>" required readonly />
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="numero_celular">Número de Celular:</label>
-                                    <input type="tel" class="form-control" id="numero_celular" name="numero_celular" placeholder="Digite seu número de celular" value="<?php echo htmlspecialchars($usuario['numero_celular']); ?>" required readonly />
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="rg">RG:</label>
-                                    <input type="text" class="form-control" id="rg" name="rg" placeholder="Digite seu RG" value="<?php echo htmlspecialchars($usuario['rg']); ?>" required readonly />
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="cpf">CPF:</label>
-                                    <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite seu CPF" value="<?php echo htmlspecialchars($usuario['cpf']); ?>" required readonly />
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="data_nascimento">Data de Nascimento:</label>
-                                    <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" value="<?php echo htmlspecialchars($usuario['data_nascimento']); ?>" required readonly />
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="sexo">Sexo:</label>
-                                    <select id="sexo" name="sexo" class="form-control" required disabled>
-                                        <option value="m" <?php echo ($sexo_usuario == 'm') ? 'selected' : ''; ?>>Masculino</option>
-                                        <option value="f" <?php echo ($sexo_usuario == 'f') ? 'selected' : ''; ?>>Feminino</option>
-                                    </select>
-                                </div>
-                            </div>
 
-                            <button type="button" id="edit-btn" class="btn btn-primary" onclick="enableEditing()">Editar</button>
-                            <button id="save-btn" type="submit" class="btn btn-success" style="display: none;">Salvar</button>
-                        </form>
-                    </div>
+        <section class="container mx-auto efeitos" style="max-width: 600px; background-color: white; margin-inline: auto; margin-block: 20px; padding: 20px; border-radius: 10px;">
+    <div class="container mt-4">
+        <div class="profile-info text-center">
+            <!-- Imagem Redonda -->
+            <div class="mb-4">
+                <img src="../pictures/outras/perfil.webp" alt="Foto de Perfil" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;" />
+            </div>
+            <form action="" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+                <!-- Campo Nome -->
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" value="<?php echo htmlspecialchars($usuario['nome']); ?>" required readonly />
                 </div>
-            </section>
-            <aside class="control-sidebar control-sidebar-dark"></aside>
+
+                <!-- Campo Número de Celular -->
+                <div class="form-group">
+                    <label for="numero_celular">Número de Celular:</label>
+                    <input type="tel" class="form-control" id="numero_celular" name="numero_celular" placeholder="Digite seu número de celular" value="<?php echo htmlspecialchars($usuario['numero_celular']); ?>" required readonly />
+                </div>
+
+                <!-- Campo RG -->
+                <div class="form-group">
+                    <label for="rg">RG:</label>
+                    <input type="text" class="form-control" id="rg" name="rg" placeholder="Digite seu RG" value="<?php echo htmlspecialchars($usuario['rg']); ?>" required readonly />
+                </div>
+
+                <!-- Campo CPF -->
+                <div class="form-group">
+                    <label for="cpf">CPF:</label>
+                    <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite seu CPF" value="<?php echo htmlspecialchars($usuario['cpf']); ?>" required readonly />
+                </div>
+
+                <!-- Campo Data de Nascimento -->
+                <div class="form-group">
+                    <label for="data_nascimento">Data de Nascimento:</label>
+                    <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" value="<?php echo htmlspecialchars($usuario['data_nascimento']); ?>" required readonly />
+                </div>
+
+                <!-- Campo Sexo -->
+                <div class="form-group">
+                    <label for="sexo">Sexo:</label>
+                    <select id="sexo" name="sexo" class="form-control" required disabled>
+                        <option value="m" <?php echo ($sexo_usuario == 'm') ? 'selected' : ''; ?>>Masculino</option>
+                        <option value="f" <?php echo ($sexo_usuario == 'f') ? 'selected' : ''; ?>>Feminino</option>
+                    </select>
+                </div>
+
+                <!-- Campo para Upload de Foto -->
+                <div class="form-group">
+                    <label for="foto_perfil">Foto de Perfil:</label>
+                    <input type="file" class="form-control" id="foto_perfil" name="foto_perfil" accept="image/*" />
+                </div>
+
+                <!-- Botões -->
+                <div class="text-center">
+                    <button type="button" id="edit-btn" class="btn btn-primary" onclick="enableEditing()">Editar</button>
+                    <button id="save-btn" type="submit" class="btn btn-success" style="display: none;">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
         </div>
 
         <script src="../adminlte/plugins/jquery/jquery.min.js"></script>
         <script src="../adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="../adminlte/dist/js/adminlte.min.js"></script>
-        <script src="../adminlte/dist/js/demo.js"></script>
 
     </div>
 </body>
