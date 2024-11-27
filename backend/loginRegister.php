@@ -31,8 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'tipo' => 'cliente' // Definindo como cliente por padrão
         ]);
 
-        // Loga o usuário após o registro
+        // Gera um token para o usuário
+        $token = bin2hex(random_bytes(16));
         $_SESSION['user_email'] = $email;
+        $_SESSION['user_token'] = $token;
 
         // Obtendo informações do usuário após o registro
         $sql = "SELECT nome, nome_foto FROM usuarios WHERE email = ?";
@@ -49,7 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
 
-        echo json_encode(['success' => 'Usuário registrado e logado com sucesso!']);
+        // Retorna o token e o sucesso do registro
+        echo json_encode(['success' => 'Usuário registrado e logado com sucesso!', 'token' => $token]);
     } catch (PDOException $e) {
         echo json_encode(['error' => 'Erro ao registrar usuário: ' . $e->getMessage()]);
     }
