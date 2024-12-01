@@ -4,8 +4,9 @@ require '../backend/config.php';
 session_start();
 
 // Verificando se o usuário está logado
-if (!isset($_SESSION['user_email'])) {
-    echo "Você precisa estar logado.";
+if (!isset($_SESSION['user_email']) || !isset($_SESSION['user_token'])) {
+    session_destroy();
+    header('Location: login.php');
     exit;
 }
 

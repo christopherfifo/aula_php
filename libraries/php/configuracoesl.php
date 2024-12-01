@@ -2,8 +2,9 @@
 require "../backend/config.php";
 session_start();
 
-if (!isset($_SESSION['user_email'])) {
-    header("Location: ../entrar.php"); // Redireciona para a página de login se não autenticado
+if (!isset($_SESSION['user_email']) || !isset($_SESSION['user_token'])) {
+    session_destroy();
+    header('Location: login.php');
     exit;
 }
 

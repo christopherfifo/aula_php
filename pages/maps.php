@@ -1,10 +1,10 @@
 <?php
 define('CONTEXT', 'other');
 session_start();
-if (!isset($_SESSION['user_email'])) {
-    echo json_encode(['status' => 'error', 'message' => 'Usuário não autenticado']);
-	header('Location: pages/login.php');
-    exit;
+if (!isset($_SESSION['user_email']) || !isset($_SESSION['user_token'])) {
+  session_destroy();
+  header('Location: login.php');
+  exit;
 }
 ?>
 <!DOCTYPE html>
@@ -34,7 +34,6 @@ if (!isset($_SESSION['user_email'])) {
 		
 
 		<div class="content-wrapper color">
-			<?php include('../includes/components/wrapper.php') ?> 
             <main>
         <section class="clinic-info">
             <h1>Informações da Clínica</h1>
@@ -102,10 +101,6 @@ if (!isset($_SESSION['user_email'])) {
 	<script src="../adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="../adminlte/dist/js/adminlte.min.js"></script>
 	<script src="../adminlte/dist/js/demo.js"></script>
-    <script src="../adminlte/plugins/jquery/jquery.min.js"></script>
-
-
->
 
 <script src="../adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script>

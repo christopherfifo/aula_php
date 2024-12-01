@@ -24,7 +24,7 @@ include('../libraries/php/editarl.php');
 
         <div class="content-wrapper color">
         <section class="appointments">
-            <main class="container my-5">
+            <main class="container">
                 <h2 class="text-center mb-4">Editar Usuário</h2>
 
                 <?php if ($usuarioEdit): ?>
@@ -63,6 +63,7 @@ include('../libraries/php/editarl.php');
                         </div>
                         <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                     </form>
+                    <a href="http://localhost/aula_php/pages/usuarios.php" style="margin-top:10px;"><button type="submit" class="btn btn-primary" style="background-color: red;margin-top:10px;">Cancelar</button></a>
                 <?php else: ?>
                     <div class="alert alert-warning">Nenhum usuário encontrado para editar.</div>
                 <?php endif; ?>
@@ -76,6 +77,5 @@ include('../libraries/php/editarl.php');
     <script src="../adminlte/plugins/jquery/jquery.min.js"></script>
     <script src="../adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../adminlte/dist/js/adminlte.min.js"></script>
-    <script src="../adminlte/dist/js/demo.js"></script>
 </body>
 </html>
